@@ -16,6 +16,7 @@ int get_day_count(string info) {
     for (int i = 0; i < day_count.size(); i++) {
         if (!isdigit(day_count[i])) {
             cout << "Error >> wrong input\n\n";
+            return -1;
         } else;
     }
     return stoi(day_count);
@@ -46,9 +47,9 @@ int find_max_profit(vector<int> price_vec) {
         day_profit[i] = price_vec[i] - current_min_price;
     }
     // find the max value from vector of every day profit
-    int max_profit=0;
+    int max_profit = 0;
     for (int i = 0; i < day_profit.size(); i++) {
-        if(day_profit[i]>max_profit)max_profit = day_profit[i];
+        if (day_profit[i] > max_profit)max_profit = day_profit[i];
         else;
     }
     return max_profit;
@@ -70,7 +71,10 @@ void print_result(int day_count, vector<int> price_vec, int profit) {
 
 int main() {
 
-    int day_count = get_day_count("Enter day count: ");
+    int day_count = -1;
+    while (day_count == -1) {
+        day_count = get_day_count("Enter day count: ");
+    }
     vector<int> price_vec = get_day_price("Enter price array: ", day_count);
     int max_profit = find_max_profit(price_vec);
     print_result(day_count, price_vec, max_profit);
