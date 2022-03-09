@@ -9,7 +9,7 @@
 using namespace std;
 
 // get day count from user input
-int get_day_count(string info) {
+int get_day_count(const string& info) {
     cout << info;
     string day_count;
     getline(cin, day_count);
@@ -23,7 +23,7 @@ int get_day_count(string info) {
 }
 
 // get day price from user input
-vector<int> get_day_price(string info, int day_count) {
+vector<int> get_day_price(const string& info, int day_count) {
     cout << info;
     string price_str, day_price;
     vector<int> price_vec;
@@ -71,6 +71,7 @@ void print_result(int day_count, vector<int> price_vec, int profit) {
 
 int main() {
 
+    // foolproof wrong input
     int day_count = -1;
     while (day_count == -1) {
         day_count = get_day_count("Enter day count: ");
